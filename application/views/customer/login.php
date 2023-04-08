@@ -9,6 +9,12 @@
    .tx-danger{
     color: red;
    }
+   #image{
+    padding-left: 67px;
+   }
+   #frame{
+  /*  width: 600px;
+   }
  </style>
  <!-- ======= Hero Section ======= -->
   <!-- <section id="hero">
@@ -111,31 +117,32 @@
             </div>
 
           </div> -->
-<div class="row" >
+<div class="row" id="frame">
       
-          <div  style=" margin:0 auto;width:800px;" >
+          <div  style=" margin:0 auto;width:320px;" >
             
             <form action="<?php echo base_url('login-customer')?>" id="loginForm" method="post"  class="php-email-form">
-              <div class="row">
-              <div class="col-lg-4">
-               <img src="<?php echo base_url()?>webassest/img/sapling.jpeg" alt="">
+             
+              <div class="col-lg-4" id="image">
+               <img src="<?php echo base_url()?>webassest/img/sapling.jpeg" alt="" style="width: 100px;">
               </div>
                <div class="col-lg-7" >
-                <div class="row" style="padding-top: 80px">
+                <div class="row" style="padding-top: 20px">
               
               <div class="form-group col-md-12 mt-3" align="center">
-                <label for="name">Aadhaar Number<span class="tx-danger">*</span></label>
-                <input type="text" class="form-control" minlength="12" maxlength="12" name="adhaar" id="adhaar"  required>
+                <label for="name" style="width: 150px">Aadhaar Number<span class="tx-danger">*</span></label>
+                <input type="text" class="form-control" minlength="12" maxlength="12" name="adhaar" id="adhaar"  " onkeypress="return onlyNumberKey(event)" style="width: 220px" required>
                           <!-- <p id="adhaar_result"></p> -->
               </div>
               <br>
               <br>
               <br>
               <br>
-              <div class="text-center"><button type="submit">Login</button></div>
+             <!--  <div class="text-center"><input type="submit" value="Login" style="width: 80px; height: 30px; background-color: #5cb874; color:white; font-weight: bold;" /></div> -->
+            <div class="text-center"><button type="submit">Login</button></div>
               </div>
               </div>
-            </div>
+           
               <!-- <div class="row" >
               
               <div class="form-group col-md-12 mt-3" align="center">
@@ -174,7 +181,12 @@
           validators: {
             notEmpty: {
               message: 'The adhaar number is required'
-            }
+            },
+            stringLength: { //this lenght validation is done on 05-04-2023 by saleem ali //
+                        min: 12,
+                        max: 12,
+                        message: 'The adhaar number must be 12 digit '
+                    }
           }
         },
        
@@ -183,4 +195,14 @@
 })
         });
 
+    </script>
+    <script>
+        function onlyNumberKey(evt) {
+              
+            // Only ASCII character in that range allowed
+            var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+            if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+                return false;
+            return true;
+        }
     </script>
